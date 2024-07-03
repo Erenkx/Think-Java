@@ -20,7 +20,7 @@ public class Logarithm {
         // check the range
         double x = in.nextDouble();
         if (x > 0) {
-            double y = Math.log(x);
+            double y = Math.log(x); // base e
             System.out.println("The log is " + y);
         } else {
             System.out.println("The log is undefined");

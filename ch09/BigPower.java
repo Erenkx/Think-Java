@@ -1,6 +1,6 @@
 import java.math.BigInteger;
 
-public class Power {
+public class BigPower {
 
     public static void main(String[] args) {
         System.out.println(pow(3, 0));    // 1

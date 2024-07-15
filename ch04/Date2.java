@@ -1,4 +1,4 @@
-public class Date {
+public class Date2 {
 
     public static void printAmerican(String day, int date,
                                      String month, int year) {

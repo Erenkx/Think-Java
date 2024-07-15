@@ -1,4 +1,4 @@
-public class Doubloon {
+public class Doubloon2 {
 
     public static boolean isDoubloon(String s) {
         // count the number of times each letter appears

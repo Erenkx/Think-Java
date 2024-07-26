@@ -46,16 +46,30 @@ public class Card {
      * a positive integer if this card comes after the card.
      */
     public int compareTo(Card that) {
-        if (this.suit < that.suit) {
+        int leftSuit = this.suit;
+        int leftRank = this.rank;
+        int rightSuit = that.suit;
+        int rightRank = that.rank;
+
+        if (leftSuit < rightSuit) {
             return -1;
         }
-        if (this.suit > that.suit) {
+        if (leftSuit > rightSuit) {
             return 1;
         }
-        if (this.rank < that.rank) {
+
+        // Aces are ranked higher than Kings
+        if (leftRank == 1) {
+            leftRank += 13;
+        }
+        if (rightRank == 1) {
+            rightRank += 13;
+        }
+
+        if (leftRank < rightRank) {
             return -1;
         }
-        if (this.rank > that.rank) {
+        if (leftRank > rightRank) {
             return 1;
         }
 
@@ -134,6 +148,14 @@ public class Card {
         Card card = new Card(11, 0);
         System.out.println(card);
         System.out.println(binarySearch(cards, card));
+
+        Card card2 = new Card(1, 2);
+        Card card3 = new Card(13, 2);
+        int comp = card2.compareTo(card3);
+        if (comp > 0) {
+            System.out.printf("%s is ranked higher than %s\n",
+                card2, card3);
+        }
     }
 
 }

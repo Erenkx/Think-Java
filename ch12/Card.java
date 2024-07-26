@@ -77,6 +77,22 @@ public class Card {
     }
 
     /**
+     * Returns a fully populated array of cards.
+     */
+    public static Card[] makeDeck() {
+        Card[] cards = new Card[52];
+        int index = 0;
+        for (int suit = 0; suit <= 3; suit++) {
+            for (int rank = 1; rank <= 13; rank++) {
+                cards[index] = new Card(rank, suit);
+                index++;
+            }
+        }
+
+        return cards;
+    }
+
+    /**
      * Returns the index of a card in an array of cards using sequential
      * search; otherwise return -1.
      */
@@ -97,7 +113,7 @@ public class Card {
     public static int binarySearch(Card[] cards, Card target) {
         int low = 0;
         int high = cards.length - 1;
-        while(low <= high) {
+        while (low <= high) {
             int mid = (low + high) / 2;
             int comp = cards[mid].compareTo(target);
 
@@ -114,14 +130,7 @@ public class Card {
     }
 
     public static void main(String[] args) {
-        Card[] cards = new Card[52];
-        int index = 0;
-        for (int suit = 0; suit <= 3; suit++) {
-            for (int rank = 1; rank <= 13; rank++) {
-                cards[index] = new Card(rank, suit);
-                index++;
-            } }
-
+        Card[] cards = makeDeck();
         Card card = new Card(11, 0);
         System.out.println(card);
         System.out.println(binarySearch(cards, card));

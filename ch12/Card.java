@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 /**
  * A standard playing card.
  */
@@ -108,7 +110,7 @@ public class Card {
 
     /**
      * Returns the index of a card in an array of cards using sequential
-     * search; otherwise return -1.
+     * search; otherwise returns -1.
      */
     public static int sequentialSearch(Card[] cards, Card target) {
         for (int i = 0; i < cards.length; i++) {
@@ -122,7 +124,7 @@ public class Card {
 
     /**
      * Returns the index of a card in an array of cards using binary
-     * search; otherwise return -1.
+     * search; otherwise returns -1.
      */
     public static int binarySearch(Card[] cards, Card target) {
         int low = 0;
@@ -143,6 +145,90 @@ public class Card {
         return -1;
     }
 
+    /**
+     * Returns a histogram of the suits in the hand.
+     */
+    public static int[] suitHist(Card[] cards) {
+        int[] hist = {0, 0, 0, 0};
+        for (Card card : cards) {
+            hist[card.getSuit()] += 1;
+        }
+
+        return hist;
+    }
+
+    /**
+     * Returns true if the hand contains a flush; otherwise returns false.
+     */
+    public static boolean hasFlush(Card[] cards) {
+        int[] hist = suitHist(cards);
+        for (int i : hist) {
+            if (i == 5) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
+     * Sorts the cards using bubble sort.
+     */
+    public static Card[] sort(Card[] cards) {
+        int len = cards.length;
+        Card[] sortedCards = new Card[len];
+        for (int i = 0; i < len; i++) {
+            sortedCards[i] = cards[i];
+        }
+
+        for (int i = 0; i < len - 1; i++) {
+            int swap = 0;
+            for (int j = 0; j < len - 1 - i; j++) {
+
+                if (sortedCards[j].compareTo(sortedCards[j + 1]) > 0) {
+                    Card temp = sortedCards[j];
+                    sortedCards[j] = sortedCards[j + 1];
+                    sortedCards[j + 1] = temp;
+                    swap += 1;
+                }
+            }
+
+            if (swap == 0) {
+                break;
+            }
+        }
+
+        return sortedCards;
+    }
+
+    /**
+     * Returns true if the hand contains a royal flush;
+     * otherwise returns false.
+     */
+    public static boolean hasRoyal(Card[] cards) {
+        if (!hasFlush(cards)) {
+            return false;
+        }
+
+        Card[] sortedCards = sort(cards);
+        int rank = 10;
+        int rankInCards = 0;
+        for (Card card : sortedCards) {
+            rankInCards = card.getRank();
+            if (rankInCards == 1) {
+                rankInCards += 13;
+            }
+
+            if (rankInCards != rank) {
+                return false;
+            }
+
+            rank += 1;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         Card[] cards = makeDeck();
         Card card = new Card(11, 0);
@@ -156,6 +242,37 @@ public class Card {
             System.out.printf("%s is ranked higher than %s\n",
                 card2, card3);
         }
+
+        Card[] cards2 = {card, card2, card3};
+        System.out.println(Arrays.toString(suitHist(cards)));
+        System.out.println(Arrays.toString(suitHist(cards2)));
+
+        Card card4 = new Card(3, 2);
+        Card card5 = new Card(12, 1);
+        Card card6 = new Card(1, 2);
+        Card card7 = new Card(7, 2);
+        Card card8 = new Card(2, 3);
+        Card card9 = new Card(9, 2);
+        Card card10 = new Card(2, 2);
+        Card[] hand1 = {card4, card5, card6, card7, card8};
+        Card[] hand2 = {card4, card9, card6, card7, card10};
+        System.out.println(hasFlush(hand1));    // false
+        System.out.println(hasFlush(hand2));    // true
+
+        System.out.println(Arrays.toString(hand1));
+        System.out.println(Arrays.toString(sort(hand1)));
+        System.out.println(Arrays.toString(hand2));
+        System.out.println(Arrays.toString(sort(hand2)));
+
+        Card card11 = new Card(13, 2);
+        Card card12 = new Card(10, 2);
+        Card card13 = new Card(1, 2);
+        Card card14 = new Card(11, 2);
+        Card card15 = new Card(12, 2);
+        Card[] hand3 = {card11, card12, card13, card14, card15};
+        System.out.println(hasRoyal(hand1));    // false
+        System.out.println(hasRoyal(hand2));    // false
+        System.out.println(hasRoyal(hand3));    // true
     }
 
 }

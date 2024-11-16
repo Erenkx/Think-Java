@@ -72,7 +72,7 @@ public class Fermat {
         }
 
         // calculate and check if theorem holds
-        if (n >= 2 && Math.pow(a, n) + Math.pow(b, n) == Math.pow(c, n)) {
+        if (n > 2 && Math.pow(a, n) + Math.pow(b, n) == Math.pow(c, n)) {
             System.out.println("Holy smokes, Fermat was wrong!");
         } else {
             System.out.println("No, that doesn't work.");

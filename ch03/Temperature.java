@@ -3,7 +3,6 @@ import java.util.Scanner;
 /**
  * Converts a temperature from Celsius to Fahrenheit.
  */
-
 public class Temperature {
 
     public static void main(String[] args) {

@@ -8,7 +8,7 @@ public class MyDate {
     private int day;
 
     /**
-     * Constructs a MyDate object with default value.
+     * Constructs a MyDate object with default values.
      */
     public MyDate() {
         this.year = 2002;
@@ -17,7 +17,7 @@ public class MyDate {
     }
 
     /**
-     * Constructs a MyDate object with given value.
+     * Constructs a MyDate object with given values.
      */
     public MyDate(int year, int month, int day) {
         this.year = year;

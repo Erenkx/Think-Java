@@ -163,7 +163,7 @@ public class Card {
     public static boolean hasFlush(Card[] cards) {
         int[] hist = suitHist(cards);
         for (int i : hist) {
-            if (i == 5) {
+            if (i >= 5) {
                 return true;
             }
         }
@@ -211,19 +211,21 @@ public class Card {
         }
 
         Card[] sortedCards = sort(cards);
-        int rank = 10;
-        int rankInCards = 0;
-        for (Card card : sortedCards) {
-            rankInCards = card.getRank();
-            if (rankInCards == 1) {
-                rankInCards += 13;
-            }
+        int[] hist = suitHist(sortedCards);
+        for (int i = 0; i < hist.length; i++) {
+            if (hist[i] >= 5) {
+                for (int rank = 10; rank <= 13; rank++) {
+                    Card target = new Card(rank, i);
+                    if (binarySearch(sortedCards, target) == -1) {
+                        return false;
+                    }
+                }
 
-            if (rankInCards != rank) {
-                return false;
+                Card target = new Card(1, i);
+                if (binarySearch(sortedCards, target) == -1) {
+                    return false;
+                }
             }
-
-            rank += 1;
         }
 
         return true;

@@ -1,6 +1,6 @@
 # Think Java: How to Think Like a Computer Scientist (Second Edition)
 
-This repository contains code examples from the book **Think Java: How to Think Like a Computer Scientist (Second Edition)** by Allen B. Downey and Chris Mayfield, as well as my own solutions to the exercises for each chapter.
+This repository contains code examples from the book **Think Java: How to Think Like a Computer Scientist (Second Edition)** by Allen B. Downey and Chris Mayfield, as well as my solutions to the exercises for each chapter.
 
 The book introduces programming concepts in Java and is ideal for beginners. It provides a practical approach to learning Java by focusing on problem-solving and computational thinking.
 
@@ -29,7 +29,7 @@ The repository is organized by chapters, with each folder containing:
 To compile and run the code examples and exercises in this repository, you will need:
 
 - **Java Development Kit (JDK) 17** or later: [Download JDK](https://www.oracle.com/java/technologies/javase-downloads.html)
-- A text editor or **Integrated Development Environment (IDE)** like IntelliJ IDEA, Eclipse, or VS Code.
+- A text editor or **Integrated Development Environment (IDE)** like [IntelliJ IDEA](https://www.jetbrains.com/idea/), [Eclipse](https://www.eclipse.org/downloads/), or [VS Code](https://code.visualstudio.com/).
 
 ## Usage
 
@@ -39,7 +39,7 @@ To compile and run the code examples and exercises in this repository, you will 
    cd Think-Java
    ```
 
-2. Navigate to the desired chapter folder to view the code examples and exercise solutions.
+2. Navigate to the desired chapter folder to view the code examples and exercise solutions:
    ```bash
    cd ch01
    ```
@@ -54,7 +54,7 @@ To compile and run the code examples and exercises in this repository, you will 
 
 ## License
 
-This repository contains my personal solutions to the exercises and examples provided in the book. The book itself is copyrighted by the authors. Please refer to the [book’s website](https://greenteapress.com/wp/think-java-2e/) for more details.
+This repository contains my solutions to the exercises and examples provided in the book. The book itself is copyrighted by the authors. Please refer to the [book’s website](https://greenteapress.com/wp/think-java-2e/) for more details.
 
 ## Acknowledgment
 

@@ -93,6 +93,12 @@ public class Deck {
      * Sorts the cards (in place) using selection sort.
      */
     public void selectionSort() {
+        int lowest;
+        int length = this.cards.length;
+        for (int i = 0; i < length; i++) {
+            lowest = indexLowest(i, length - 1);
+            this.swapCards(i, lowest);
+        }
     }
 
     /**
@@ -100,7 +106,14 @@ public class Deck {
      * between low and high inclusive.
      */
     private int indexLowest(int low, int high) {
-        return 0;
+        int lowest = low;
+        for (int i = low + 1; i <= high; i++) {
+            if (this.cards[i].compareTo(this.cards[lowest]) == -1) {
+                lowest = i;
+            }
+        }
+
+        return lowest;
     }
 
     /**
@@ -111,6 +124,7 @@ public class Deck {
         for (int i = 0; i < sub.cards.length; i++) {
             sub.cards[i] = this.cards[low + i];
         }
+
         return sub;
     }
 
@@ -118,21 +132,80 @@ public class Deck {
      * Combines two previously sorted subdecks.
      */
     private static Deck merge(Deck d1, Deck d2) {
-        return null;
+        int length1 = d1.cards.length;
+        int length2 = d2.cards.length;
+        Deck d3 = new Deck(length1 + length2);
+
+        // use the index i to keep track of where we are at in the first
+        // deck, and the index j for the second deck
+        int i = 0;
+        int j = 0;
+
+        // the index k traverses the result deck
+        for (int k = 0; k < d3.cards.length; k++) {
+            if (length1 == 0) {
+                d3.cards[k] = d2.cards[j];
+                j++;
+                length2--;
+            } else if (length2 == 0) {
+                d3.cards[k] = d1.cards[i];
+                i++;
+                length1--;
+            } else {
+                if (d1.cards[i].compareTo(d2.cards[j]) <= 0) {
+                    d3.cards[k] = d1.cards[i];
+                    i++;
+                    length1--;
+                } else {
+                    d3.cards[k] = d2.cards[j];
+                    j++;
+                    length2--;
+                }
+            }
+        }
+
+        return d3;
     }
 
     /**
      * Returns a sorted copy of the deck using selection sort.
      */
     public Deck almostMergeSort() {
-        return this;
+        int length = this.cards.length;
+
+        // divide the deck into two subdecks
+        Deck d1 = this.subdeck(0, length / 2 - 1);
+        Deck d2 = this.subdeck(length / 2, length - 1);
+
+        // sort the subdecks using selectionSort
+        d1.selectionSort();
+        d2.selectionSort();
+
+        // merge the subdecks, return the result
+        return merge(d1, d2);
     }
 
     /**
      * Returns a sorted copy of the deck using merge sort.
      */
     public Deck mergeSort() {
-        return this;
+        int length = this.cards.length;
+
+        // if the deck has 0 or 1 cards, return it
+        if (length <= 1) {
+            return this;
+        }
+
+        // otherwise, divide the deck into two subdecks
+        Deck subdeck1 = this.subdeck(0, length / 2 - 1);
+        Deck subdeck2 = this.subdeck(length / 2, length - 1);
+
+        // sort the subdecks using mergeSort
+        subdeck1 = subdeck1.mergeSort();
+        subdeck2 = subdeck2.mergeSort();
+
+        // merge the subdecks, return the result
+        return merge(subdeck1, subdeck2);
     }
 
     /**
@@ -151,6 +224,23 @@ public class Deck {
         Deck deck = new Deck();
         deck.shuffle();
         System.out.println(deck);
+
+        System.out.println();
+
+        deck.selectionSort();
+        System.out.println(deck);
+
+        System.out.println();
+
+        deck.shuffle();
+        Deck mergedDeck = deck.almostMergeSort();
+        System.out.println(mergedDeck);
+
+        System.out.println();
+
+        deck.shuffle();
+        Deck sortedDeck = deck.mergeSort();
+        System.out.println(sortedDeck);
     }
 
 }

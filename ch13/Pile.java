@@ -15,6 +15,13 @@ public class Pile {
     }
 
     /**
+     * Gets the internal cards array.
+     */
+    public ArrayList<Card> getCards() {
+        return this.cards;
+    }
+
+    /**
      * Adds a card to the bottom of the pile.
      */
     public void addCard(Card card) {

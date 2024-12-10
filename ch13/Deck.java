@@ -212,12 +212,18 @@ public class Deck {
      * Reorders the cards (in place) using insertion sort.
      */
     public void insertionSort() {
+        for (int i = 1; i < this.cards.length; i++) {
+            insert(this.cards[i], i);
+        }
     }
 
     /**
      * Helper method for insertion sort.
      */
     private void insert(Card card, int i) {
+        for (int k = i; k >= 1 && card.compareTo(this.cards[k-1]) < 0; k--) {
+            swapCards(k, k-1);
+        }
     }
 
     public static void main(String[] args) {
@@ -241,6 +247,12 @@ public class Deck {
         deck.shuffle();
         Deck sortedDeck = deck.mergeSort();
         System.out.println(sortedDeck);
+
+        System.out.println();
+
+        deck.shuffle();
+        deck.insertionSort();
+        System.out.println(deck);
     }
 
 }

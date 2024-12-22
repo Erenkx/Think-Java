@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -7,8 +8,7 @@ import java.util.Scanner;
  */
 public class Eights {
 
-    private Player one;
-    private Player two;
+    private ArrayList<Player> players;
     private Hand drawPile;
     private Hand discardPile;
     private Scanner in;
@@ -21,10 +21,13 @@ public class Eights {
         deck.shuffle();
 
         // deal cards to each player
-        one = new Player("Allen");
-        deck.deal(one.getHand(), 5);
-        two = new Player("Chris");
-        deck.deal(two.getHand(), 5);
+        players = new ArrayList<Player>();
+        players.add(new Player("Allen"));
+        players.add(new Player("Chris"));
+        players.add(new Player("David"));
+        for (Player player : players) {
+            deck.deal(player.getHand(), 5);
+        }
 
         // turn one card face up
         discardPile = new Hand("Discards");
@@ -42,8 +45,13 @@ public class Eights {
      * Returns true if either hand is empty.
      */
     public boolean isDone() {
-        return one.getHand().isEmpty() 
-            || two.getHand().isEmpty();
+        for (Player player : players) {
+            if (player.getHand().isEmpty()) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     /**
@@ -78,19 +86,18 @@ public class Eights {
      * Switches players.
      */
     public Player nextPlayer(Player current) {
-        if (current == one) {
-            return two;
-        } else {
-            return one;
-        }
+        int next = (players.indexOf(current) + 1) % players.size();
+        
+        return players.get(next);
     }
 
     /**
      * Displays the state of the game.
      */
     public void displayState() {
-        one.display();
-        two.display();
+        for (Player player : players) {
+            player.display();
+        }
         discardPile.display();
         System.out.print("Draw pile: ");
         System.out.println(drawPile.size() + " cards");
@@ -113,7 +120,7 @@ public class Eights {
      * Plays the game.
      */
     public void playGame() {
-        Player player = one;
+        Player player = players.get(0);
 
         // keep playing until there's a winner
         while (!isDone()) {
@@ -123,8 +130,9 @@ public class Eights {
         }
 
         // display the final score
-        one.displayScore();
-        two.displayScore();
+        for (Player p : players) {
+            p.displayScore();
+        }
     }
 
     /**

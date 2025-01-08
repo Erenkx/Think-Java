@@ -125,4 +125,22 @@ public class GridCanvas extends Canvas {
         draw(g);
     }
 
+    /**
+     * Counts the total number of cells that are on.
+     *
+     * @return number of live cells
+     */
+    public int countOn() {
+        int count = 0;
+        for (Cell[] row : array) {
+            for (Cell cell : row) {
+                if (cell.isOn()) {
+                    count += 1;
+                }
+            }
+        }
+
+        return count;
+    }
+
 }

@@ -81,12 +81,22 @@ public class GridCanvas extends Canvas {
      * @return 1 or 0
      */
     public int test(int r, int c) {
-        try {
-            if (array[r][c].isOn()) {
-                return 1;
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            // cell does not exist
+        if (r < 0) {
+            r += numRows();
+        }
+        if (r >= numRows()) {
+            r -= numRows();
+        }
+
+        if (c < 0) {
+            c += numCols();
+        }
+        if (c >= numCols()) {
+            c -= numCols();
+        }
+
+        if (array[r][c].isOn()) {
+            return 1;
         }
 
         return 0;

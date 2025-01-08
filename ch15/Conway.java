@@ -11,13 +11,12 @@ public class Conway {
      * Creates a grid with two Blinkers.
      */
     public Conway() {
-        grid = new GridCanvas(5, 10, 50);
-        grid.turnOn(2, 1);
-        grid.turnOn(2, 2);
+        grid = new GridCanvas(5, 5, 50);
+        grid.turnOn(1, 2);
         grid.turnOn(2, 3);
-        grid.turnOn(1, 7);
-        grid.turnOn(2, 7);
-        grid.turnOn(3, 7);
+        grid.turnOn(3, 1);
+        grid.turnOn(3, 2);
+        grid.turnOn(3, 3);
     }
 
     /**

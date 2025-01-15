@@ -1,4 +1,8 @@
 import javax.swing.JFrame;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Conway's Game of Life.
@@ -17,6 +21,48 @@ public class Conway {
         grid.turnOn(3, 1);
         grid.turnOn(3, 2);
         grid.turnOn(3, 3);
+    }
+
+    /**
+     * Creates a grid based on the given file.
+     */
+    public Conway(String path) {
+        File file = new File(path);
+        try {
+            Scanner scan = new Scanner(file);
+            ArrayList<ArrayList<Integer>> list =
+                new ArrayList<ArrayList<Integer>>();
+            while (scan.hasNextLine()) {
+                String s = scan.nextLine();
+                if (s.startsWith("!")) {
+                    continue;
+                }
+
+                ArrayList<Integer> row = new ArrayList<Integer>();
+                for (char c : s.toCharArray()) {
+                    if (c == '.') {
+                        row.add(0);
+                    } else {
+                        row.add(1);
+                    }
+                }
+                list.add(row);
+            }
+
+            int rows = list.size();
+            int cols = list.get(0).size();
+            grid = new GridCanvas(rows, cols, 50);
+            for (int i = 0; i < rows; i++) {
+                for (int j = 0; j < cols; j++) {
+                    if (list.get(i).get(j) == 1) {
+                        grid.turnOn(i, j);
+                    }
+                }
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+            System.exit(1);
+        }
     }
 
     /**
@@ -133,7 +179,7 @@ public class Conway {
      */
     public static void main(String[] args) {
         String title = "Conway's Game of Life";
-        Conway game = new Conway();
+        Conway game = new Conway("glider.cells");
         JFrame frame = new JFrame(title);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);

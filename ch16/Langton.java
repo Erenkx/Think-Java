@@ -1,11 +1,8 @@
-import javax.swing.JFrame;
-
 /**
  * Langton's Ant.
  */
-public class Langton {
+public class Langton extends Automaton {
 
-    private GridCanvas grid;
     private int xpos;
     private int ypos;
     private int head; // 0=North, 1=East, 2=South, 3=West
@@ -55,31 +52,11 @@ public class Langton {
     }
 
     /**
-     * Simulates on round of Langton's Ant.
+     * Simulates one round of Langton's Ant.
      */
     public void update() {
         flipCell();
         moveAnt();
-    }
-
-    /**
-     * The simulation loop.
-     *
-     * @param rate frames per second
-     */
-    private void mainloop(int rate) {
-        while (true) {
-            // update the drawing
-            this.update();
-            grid.repaint();
-
-            // delay the simulation
-            try {
-                Thread.sleep(1000 / rate);
-            } catch (InterruptedException e) {
-                // do nothing
-            }
-        }
     }
 
     /**
@@ -90,13 +67,7 @@ public class Langton {
     public static void main(String[] args) {
         String title = "Langton's Ant";
         Langton game = new Langton(61, 61);
-        JFrame frame = new JFrame(title);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
-        frame.add(game.grid);
-        frame.pack();
-        frame.setVisible(true);
-        game.mainloop(2);
+        game.run(title, 2);
     }
 
 }

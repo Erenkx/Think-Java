@@ -3,8 +3,8 @@ public class OddSum {
     /**
      * Calculates the sum of odd integers from 1 to n.
      *
-     * @param n     a positive odd integer
-     * @return      odd sum from 1 to n
+     * @param n a positive odd integer
+     * @return odd sum from 1 to n
      */
     public static int oddSum(int n) {
         if (n <= 0 || n % 2 == 0) {

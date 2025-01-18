@@ -3,8 +3,8 @@ public class Factor {
     /**
      * Checks if an integer n is a prime number.
      *
-     * @param n     an integer
-     * @return      true if n is a prime, false otherwise
+     * @param n an integer
+     * @return true if n is a prime, false otherwise
      */
     public static boolean isPrime(int n) {
         // 2 is the smallest prime number
@@ -25,10 +25,10 @@ public class Factor {
     /**
      * Checks if the numbers in the array are all factors of n.
      *
-     * @param n         an integer
-     * @param factors   an integer array
-     * @return          true if the numbers in factors are all factors of n,
-     *                  false otherwise
+     * @param n an integer
+     * @param factors an integer array
+     * @return true if the numbers in factors are all factors of n, false
+     * otherwise
      */
     public static boolean areFactors(int n, int[] factors) {
         if (factors.length == 0) {
@@ -48,10 +48,10 @@ public class Factor {
      * Checks if the numbers in the array are all prime and
      * their product is n.
      *
-     * @param n         an integer
-     * @param pfactors  an integer array
-     * @return          true if the numbers in pfactors are all prime and
-     *                  their product is n, false otherwise
+     * @param n an integer
+     * @param pfactors an integer array
+     * @return true if the numbers in pfactors are all prime and their
+     * product is n, false otherwise
      */
     public static boolean arePrimeFactors(int n, int[] pfactors) {
         if (pfactors.length == 0) {

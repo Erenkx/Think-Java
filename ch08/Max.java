@@ -19,10 +19,10 @@ public class Max {
      * Finds the maximum value in the array between lowIndex and highIndex,
      * including both.
      *
-     * @param ints      an array of integers
-     * @param lowIndex  lower bound index
+     * @param ints an array of integers
+     * @param lowIndex lower bound index
      * @param highIndex higher bound index
-     * @return          max value in the array
+     * @return max value in the array
      */
     public static int maxInRange(int[] ints, int lowIndex, int highIndex) {
         if (lowIndex == highIndex) {
@@ -43,8 +43,8 @@ public class Max {
     /**
      * Finds the maximum value in the array.
      *
-     * @param ints  an array of integers
-     * @return      max value in the array
+     * @param ints an array of integers
+     * @return max value in the array
      */
     public static int max(int[] ints) {
         return maxInRange(ints, 0, ints.length - 1);

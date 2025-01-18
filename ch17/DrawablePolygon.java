@@ -18,6 +18,21 @@ public class DrawablePolygon extends Polygon implements Actor {
     }
 
     /**
+     * Returns a string representation of the polygon.
+     */
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        String point = String.format("(%d, %d)", xpoints[0], ypoints[0]);
+        sb.append(point);
+        for (int i = 1; i < npoints; i++) {
+            point = String.format(", (%d, %d)", xpoints[i], ypoints[i]);
+            sb.append(point);
+        }
+
+        return sb.toString();
+    }
+
+    /**
      * Draws the polygon on the screen.
      *
      * @param g graphics context
@@ -43,6 +58,7 @@ public class DrawablePolygon extends Polygon implements Actor {
         p.addPoint(100, 35);
         p.addPoint(143, 110);
         p.color = Color.GREEN;
+        System.out.println(p);
     }
 
 }

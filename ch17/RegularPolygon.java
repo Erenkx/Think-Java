@@ -55,7 +55,7 @@ public class RegularPolygon extends DrawablePolygon {
         double theta = 2.0 * Math.PI / nsides;
 
         // rotation that makes the polygon right-side up
-        double rotate = Math.PI /nsides + Math.PI / 2.0;
+        double rotate = Math.PI / nsides + Math.PI / 2.0;
 
         // compute x and y coordinates, centered at the origin
         for (int i = 0; i < nsides; i++) {

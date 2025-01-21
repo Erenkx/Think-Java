@@ -12,15 +12,14 @@ public class Main {
      * @param args command-line arguments
      */
     public static void main(String[] args) {
-        // create some regular polygons
+        // create some polygons
         DrawablePolygon p1 = new RegularPolygon(3, 50, Color.GREEN);
-        DrawablePolygon p2 = new RegularPolygon(6, 50, Color.ORANGE);
-        DrawablePolygon p3 = new RegularPolygon(360, 50, Color.BLUE);
+        DrawablePolygon p2 = new BlinkingPolygon(6, 50, Color.ORANGE);
+        DrawablePolygon p3 = new MovingPolygon(360, 50, Color.BLUE, 400, 160);
 
         // move them out of the corner
         p1.translate(100, 80);
         p2.translate(250, 120);
-        p3.translate(400, 160);
 
         // create drawing, add polygons
         Drawing drawing = new Drawing(500, 250);
@@ -34,6 +33,18 @@ public class Main {
         frame.add(drawing);
         frame.pack();
         frame.setVisible(true);
+
+        while (true) {
+            // update the drawing
+            drawing.step();
+
+            // delay the simulation
+            try {
+                Thread.sleep(50);
+            } catch (InterruptedException e) {
+                // do nothing
+            }
+        }
     }
 
 }

@@ -10,7 +10,7 @@ The book introduces programming concepts in Java and is ideal for beginners. It 
 - [Prerequisites](#prerequisites)
 - [Usage](#usage)
 - [License](#license)
-- [Acknowledgment](#acknowledgment)
+- [Acknowledgments](#acknowledgments)
 
 ## Book Details
 
@@ -28,8 +28,8 @@ The repository is organized by chapters, with each folder containing:
 
 To compile and run the code examples and exercises in this repository, you will need:
 
-- **Java Development Kit (JDK) 17** or later: [Download JDK](https://www.oracle.com/java/technologies/javase-downloads.html)
-- A text editor or **Integrated Development Environment (IDE)** like [IntelliJ IDEA](https://www.jetbrains.com/idea/), [Eclipse](https://www.eclipse.org/downloads/), or [VS Code](https://code.visualstudio.com/).
+- **Java Development Kit (JDK) 17** or later: [Download JDK](https://www.oracle.com/java/technologies/javase-downloads.html).
+- A text editor or **Integrated Development Environment (IDE)** like [IntelliJ IDEA](https://www.jetbrains.com/idea/), [Eclipse](https://www.eclipse.org/), or [VS Code](https://code.visualstudio.com/).
 
 ## Usage
 
@@ -56,7 +56,7 @@ To compile and run the code examples and exercises in this repository, you will 
 
 This repository contains my solutions to the exercises and examples provided in the book. The book itself is copyrighted by the authors. Please refer to the [book’s website](https://greenteapress.com/wp/think-java-2e/) for more details.
 
-## Acknowledgment
+## Acknowledgments
 
 - Special thanks to **Allen B. Downey** and **Chris Mayfield** for their excellent work on this book.
 - Thanks to [**Green Tea Press**](https://greenteapress.com/wp/) for publishing and making the book widely accessible.
